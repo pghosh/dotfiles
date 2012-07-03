@@ -3,7 +3,7 @@
 [format]
   pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
 [user]
-	name = paramita
+	name = pghosh
 	email = pghosh@wgen.net
 [color]
 	status = auto
