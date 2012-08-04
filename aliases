@@ -70,3 +70,4 @@ token=`mongo --quiet sli --eval 'db.userSession.find({"body.principal.externalId
 response=`curl -s -H "Content-type: application/json" -H "accept: application/${format}" -H "Authorization: bearer $token" $url`
 echo $response | python -mjson.tool
 }
+
