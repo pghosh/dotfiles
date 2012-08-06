@@ -99,3 +99,11 @@ let g:html_indent_tags = 'li\|p'
 " Improve syntax highlighting
 au BufRead,BufNewFile Gemfile set filetype=ruby
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" Settings for VimClojure
+let vimclojure#HighlightBuiltins = 1      " Highlight Clojure's builtins
+let vimclojure#ParenRainbow = 1           " Rainbow parentheses'!
+
+"pathogen.vim
+call pathogen#infect()
+map <F2> :NERDTreeToggle<CR>
