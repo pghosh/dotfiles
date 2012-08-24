@@ -67,7 +67,7 @@ alias mcpi="mvn clean package install"
 get() {
 url=http://local.slidev.org:8080/api/rest/v1$2
 token=`mongo --quiet sli --eval 'db.userSession.find({"body.principal.externalId":"'$1'"})[0].body.appSession[0].token'`
-response=`curl -s -H "Content-type: application/json" -H "accept: application/${format}" -H "Authorization: bearer $token" $url`
+response=`curl -s -H "Content-type: application/json" -H "accept: application/json" -H "Authorization: bearer $token" $url`
 echo $response | python -mjson.tool
 }
 
@@ -76,3 +76,35 @@ alias jenkins='java -jar /usr/local/Cellar/jenkins/1.464/libexec/jenkins.war --h
 
 #set veriable
 SLI_HOME=/Users/pghosh/codebase/sli/sli
+
+shard() {
+  if [ -z $1 ] 
+  then
+    echo "No argument specified"
+    exit
+  fi
+  if [ $1 = "start" ]
+  then
+    echo "Sharding..."
+    cd ~/mongo/shard
+    sh $SLI_HOME/config/scripts/sharding/start-shard.sh
+    mongo sli < $SLI_HOME/config/indexes/sli_indexes.js
+    mongo sli < $SLI_HOME/config/shards/sli_shard_indexes.js
+    mongo admin < $SLI_HOME/config/shards/sli_shards.js
+  elif [ $1 = "kill" ]
+  then
+    echo "Killing shards..."
+    cd ~/mongo/shard
+    sh $SLI/config/scripts/sharding/kill-shard.sh
+    if [[ ! -z $2 ]] && [[ $2 = "clear" ]]
+    then
+      echo "Removing everything..."
+      rm -rf ~/mongo/shard/*
+    fi
+  elif [ $1 = "is" ]
+  then
+    echo "Indexing IS..."
+    mongo is $SLI_HOME/config/indexes/is_indexes.js
+  fi
+}
+alias kill-jetty="ps -ef|grep rackup|grep -v grep|awk '{print $2}'|xargs kill -9"
