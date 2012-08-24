@@ -107,4 +107,4 @@ shard() {
     mongo is $SLI_HOME/config/indexes/is_indexes.js
   fi
 }
-alias kill-jetty="ps -ef|grep rackup|grep -v grep|awk '{print $2}'|xargs kill -9"
+alias kill-jetty="ps -ef|grep jetty|grep -v grep|awk '{print $2}'|xargs kill -9"
