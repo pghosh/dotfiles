@@ -70,4 +70,6 @@ token=`mongo --quiet sli --eval 'db.userSession.find({"body.principal.externalId
 response=`curl -s -H "Content-type: application/json" -H "accept: application/${format}" -H "Authorization: bearer $token" $url`
 echo $response | python -mjson.tool
 }
-
+#postgres
+alias postg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias postg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'

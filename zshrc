@@ -69,3 +69,4 @@ setopt EXTENDED_GLOB
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 NODE_PATH=/usr/local/lib/node_modules
 NODE_PATH=/usr/local/lib/node_modules
+export PATH=/usr/local/bin:$PATH
