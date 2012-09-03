@@ -107,3 +107,8 @@ let vimclojure#ParenRainbow = 1           " Rainbow parentheses'!
 "pathogen.vim
 call pathogen#infect()
 map <F2> :NERDTreeToggle<CR>
+
+syntax enable
+set background=dark
+colorscheme solarized
+
