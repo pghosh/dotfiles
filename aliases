@@ -61,8 +61,7 @@ alias db-backup-production='heroku pgbackups:capture --remote production'
 alias whats-my-ip="curl -s checkip.dyndns.org | grep -Eo '[0-9\.]+'"
 
 # Maven
-alias mc="mvn clean"
-alias mcpi="mvn clean package install"
+alias build="mvn clean package install"
 
 get() {
 url=http://local.slidev.org:8080/api/rest/v1$2
@@ -107,4 +106,5 @@ shard() {
     mongo is $SLI_HOME/config/indexes/is_indexes.js
   fi
 }
-alias kill-jetty="ps -ef|grep jetty|grep -v grep|awk '{print $2}'|xargs kill -9"
+alias kill-jetty='ps -ef|grep jetty|grep -v grep|awk '{print $2}'|xargs kill -9'
+alias fast-build='mvn clean package install -DskipTests'
