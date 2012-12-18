@@ -110,5 +110,6 @@ map <F2> :NERDTreeToggle<CR>
 
 syntax enable
 set background=dark
-colorscheme solarized
-
+colorscheme codeschool
+let g:Powerline_symbols = 'unicode' 
+let g:rct_completion_use_fri = 1

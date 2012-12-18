@@ -109,3 +109,6 @@ shard() {
   fi
 }
 alias kill-jetty="ps -ef|grep jetty|grep -v grep|awk '{print $2}'|xargs kill -9"
+#Go path
+export GOPATH=$HOME/Projects/golang
+export PATH=$PATH:$HOME/Projects/golang/bin

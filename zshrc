@@ -70,3 +70,7 @@ setopt EXTENDED_GLOB
 NODE_PATH=/usr/local/lib/node_modules
 NODE_PATH=/usr/local/lib/node_modules
 export PATH=/usr/local/bin:$PATH
+
+#share history among shell
+setopt inc_append_history
+setopt share_history
