@@ -71,7 +71,7 @@ echo $response | python -mjson.tool
 }
 
 #jenkins run
-alias jenkins='java -jar /usr/local/Cellar/jenkins/1.464/libexec/jenkins.war --httpPort=9000'
+alias jenkins='java -jar /usr/local/Cellar/jenkins/1.478/libexec/jenkins.war --httpPort=9000'
 
 #set veriable
 SLI_HOME=/Users/pghosh/codebase/sli/sli
@@ -106,5 +106,9 @@ shard() {
     mongo is $SLI_HOME/config/indexes/is_indexes.js
   fi
 }
-alias kill-jetty='ps -ef|grep jetty|grep -v grep|awk '{print $2}'|xargs kill -9'
+alias kill-jetty="ps -ef|grep jetty|grep -v grep|awk '{print \$2}'|xargs kill -9"
+alias kill-ruby="ps -ef|grep ruby|grep -v grep|awk '{print \$2}'|xargs kill -9"
+alias kill-tommy="ps -ef|grep tomcat|grep -v grep|awk '{print \$2}'|xargs kill -9"
 alias fast-build='mvn clean package install -DskipTests'
+export LZ='/Users/pghosh/codebase/sli/sli/ingestion/ingestion-service/target/ingestion/lz/inbound'
+

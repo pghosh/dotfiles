@@ -2,7 +2,7 @@
 git_prompt_info() {
   ref=$(git symbolic-ref HEAD 2> /dev/null)
   if [[ -n $ref ]]; then
-    echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
+    echo "%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}|"
   fi
 }
 
@@ -17,7 +17,7 @@ export CLICOLOR=1
 setopt prompt_subst
 
 # prompt
-export PS1='$(git_prompt_info)[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}] '
+export PS1='$(git_prompt_info)${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[red]%}%~%{$reset_color%} > '
 
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

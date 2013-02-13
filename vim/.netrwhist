@@ -1,3 +1,11 @@
 let g:netrw_dirhistmax  =10
+<<<<<<< HEAD
 let g:netrw_dirhist_cnt =1
 let g:netrw_dirhist_1='/Users/pghosh/.zsh'
+=======
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/pghosh/.zsh'
+let g:netrw_dirhist_2='/Users/pghosh/Projects/npage/.git'
+let g:netrw_dirhist_3='/Users/pghosh/.vim'
+let g:netrw_dirhist_4='/Users/pghosh/codebase/sli/sli/config/indexes'
+>>>>>>> 788d389... updated vim and other stuff

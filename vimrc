@@ -8,14 +8,6 @@ set nowritebackup
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
-
-filetype plugin indent on
-
 augroup vimrcEx
   au!
 
@@ -104,6 +96,46 @@ au BufRead,BufNewFile *.md set filetype=markdown
 let vimclojure#HighlightBuiltins = 1      " Highlight Clojure's builtins
 let vimclojure#ParenRainbow = 1           " Rainbow parentheses'!
 
-"pathogen.vim
-call pathogen#infect()
+"Vundle
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+ call vundle#rc()
+ "Bundle repos here
+ "github repos
+Bundle 'gmarik/vundle'
+Bundle 'tpope/vim-fugitive'
+Bundle 'Valloric/YouCompleteMe'
+
+ " non github repos
+Bundle 'wincent/Command-T'
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
+endif
+
+filetype plugin indent on
+
+
 map <F2> :NERDTreeToggle<CR>
+
+syntax enable
+set background=dark
+
+"Autocomplete
+set ofu=syntaxcomplete#Complete
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd Filetype java set omnifunc=javacomplete#Complete
+set guifont=Monaco:h12
+if has("autocmd")
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
+colorscheme Tomorrow-Night-Bright
