@@ -27,3 +27,6 @@
   rh = reset --hard
   m = merge
   cb = checkout -b
+  editor = mvim -v
+[core]
+	excludesfile = /Users/pghosh/.gitignore

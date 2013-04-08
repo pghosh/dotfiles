@@ -82,37 +82,7 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
-ingest-zip() {
-   if [ -z $1 ] || [ -z $2 ]
-   then
-     echo "No zip and/or tenant specified. Usage:"
-     echo "  ingest-zip <PATH_TO_ZIP> <TENANT>"
-     echo "  Example tenants: Midgar-DAYBREAK, Midgar-SUNSET, Hyrule-NYC"
-     return
-   fi
-   echo "Removing existing log files..."
-   rm -rf $LZ/$2/*.log
-   echo "Copying $1 to $LZ/$2/"
-   cp $1 $LZ/$2/
-   echo "Sleep for 2 seconds..."
-   sleep 2
-   zip_file=`basename $1`
-   ruby $SLI_HOME/opstools/ingestion_trigger/publish_file_uploaded.rb STOR $LZ/$2/$zip_file localhost
-   #poll for job log file
-   echo "Polling $LZ/$2/ for job log file..."
-   while [ 1 ]
-   do
-     job_log_file=`find $LZ/$2/ -name *.log`
-     if [ ! -z $job_log_file ]
-     then
-       for file in $job_log_file
-       do
-         echo "$file found."
-       done
-       break
-     fi
-     echo -n "."
-     sleep 3
-   done
-}
-export TOGGLE_TABLESCANS=true
+# machine specific settions
+if [ -e "$HOME/.local_setup" ]; then
+  source "$HOME/.local_setup"
+fi
