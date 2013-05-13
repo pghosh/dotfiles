@@ -42,7 +42,6 @@ if executable("ack")
 endif
 
 " Color scheme
-colorscheme vividchalk
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -138,4 +137,4 @@ if has("autocmd")
     \ endif
 endif
 autocmd FileType ruby map <F9> :w<CR>:!ruby -c %<CR>
-colorscheme Tomorrow-Night-Bright
+colorscheme jellybeans

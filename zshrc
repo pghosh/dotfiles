@@ -66,7 +66,7 @@ setopt EXTENDED_GLOB
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 NODE_PATH=/usr/local/lib/node_modules
 NODE_PATH=/usr/local/lib/node_modules
-export PATH=/Users/pghosh/tools/apache-jmeter-2.7/bin:/usr/local/bin:/Users/pghosh/tools/play-2.0.4:$PATH
+export PATH=/usr/local/share/npm/bin:/Users/pghosh/tools/apache-jmeter-2.7/bin:/usr/local/bin:/Users/pghosh/tools/play-2.0.4:$PATH
 export SLI_HOME=/Users/pghosh/codebase/sli/sli
 launchctl setenv PATH $PATH
 export PATH=/usr/local/mysql/bin:$PATH
@@ -86,3 +86,4 @@ zle -N zle-keymap-select
 if [ -e "$HOME/.local_setup" ]; then
   source "$HOME/.local_setup"
 fi
+JAVA_OPTS="-Xmx2g -XX:MaxPermSize=512m"

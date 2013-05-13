@@ -1,32 +1,38 @@
 [push]
-  default = tracking
+default = tracking
 [format]
-  pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
+pretty = %Cblue%h%Creset %Cgreen[%ar]%Creset (%an) %s
 [user]
-	name = pghosh
+name = pghosh
 [color]
-	status = auto
-	branch = auto
-	ui = always
+status = auto
+branch = auto
+ui = always
 [alias]
-  us = reset HEAD
-  uc = reset --soft HEAD^
-  pl = smart-pull 
-  ph = push
-  st = status -s
-  co = checkout
-  ci = commit
-  br = branch
-  df = diff
-  dc = diff --cached
-  aa = add -A
-  ai = add -i
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit 
-  rh = reset --hard
-  m = merge
-  cb = checkout -b
-  editor = mvim -v
+us = reset HEAD
+uc = reset --soft HEAD^
+pl = smart-pull 
+ph = push
+st = status -s
+co = checkout
+ci = commit
+br = branch
+df = diff
+dc = diff --cached
+aa = add -A
+ai = add -i
+lol = log --graph --decorate --pretty=oneline --abbrev-commit
+lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit 
+rh = reset --hard
+m = merge
+cb = checkout -b
+editor = mvim -v
+assume   = update-index --assume-unchanged
+unassume = update-index --no-assume-unchanged
+assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
 [core]
 	excludesfile = /Users/pghosh/.gitignore
